@@ -1,0 +1,19 @@
+.grid {
+  width: 100%;
+  .row {
+    display: flex;
+    width: 100%;
+    row-gap: 1px;
+    column-gap: 1px;
+
+    .incorrect {
+      background-color: #ff6969;
+    }
+    .correct {
+      background-color: #a6d0dd;
+    }
+    .misplaced {
+      background-color: #ffd3b0;
+    }
+  }
+}
