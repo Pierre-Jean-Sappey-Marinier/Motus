@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AddNewWordForm({ handleAddWord }) {
+function AddNewWordForm({ handleAddWord, tentative }) {
   const [wordName, setwordName] = React.useState('');
 
   return (
@@ -14,7 +14,7 @@ function AddNewWordForm({ handleAddWord }) {
           setwordName('');
         }}
       >
-        <label htmlFor='new-list-form-input'>Enter guess: </label>
+        <label htmlFor='new-list-form-input'>Ici votre mot: </label>
 
         <div className='row'>
           <input
@@ -30,6 +30,9 @@ function AddNewWordForm({ handleAddWord }) {
           <button></button>
         </div>
       </form>
+      <div className='nombre-de-tentatives-restantes'>
+        <p>Nombre de tentatives restantes : {7 - tentative}</p>
+      </div>
     </div>
   );
 }

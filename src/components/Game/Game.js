@@ -5,15 +5,14 @@ import { WORDS } from '../../data';
 import Submitword from './Bubmitword';
 import Grid from './Grid';
 import './game.scss';
-import { checkGuess } from '../../game-helpers';
+import Final from './Final';
 
 const answer = sample(WORDS);
-console.info({ answer });
 console.log({ answer });
 function Game() {
   const [word, setWord] = useState([
     {
-      wordName: 'POPOP',
+      wordName: 'MOTUS',
       id: crypto.randomUUID(),
     },
   ]);
@@ -23,6 +22,11 @@ function Game() {
       alert('Input value must be at least 5 characters long.');
       return;
     }
+    if (word.length == 7) {
+      alert('Le nombre maximum de tentatives a été atteint.');
+      return;
+    }
+
     const newWord = {
       wordName: wordName,
       id: crypto.randomUUID(),
@@ -38,16 +42,20 @@ function Game() {
   return (
     <>
       <ul className='word-list'>
+        <Submitword handleAddWord={handleAddWord} tentative={word.length} />
+      </ul>
+      <div className='grid-elem'>
+        <h1>MOTUS</h1>
+        <Grid letter={word} answer={answer} />
+      </div>
+      <div className='tested-words'>
+        <p>Mots testés :</p>
         {word.map(({ id, wordName }) => (
           <li key={id}>{wordName}</li>
         ))}
-        <Submitword handleAddWord={handleAddWord} />
-      </ul>
-      <div className='grid-elem'>
-        <h1>Ma grille de 5x10</h1>
-        <Grid letter={word} answer={answer} />
-        {console.log('🚀 ~ file: Game.js:42 ~ Game ~ letter:', word)}{' '}
       </div>
+
+      <Final tentative={word.length} />
     </>
   );
 }

@@ -5,3 +5,15 @@
   justify-content: center;
   align-items: center;
 }
+.word-list {
+  display: flex;
+  justify-content: space-between;
+}
+.tested-words {
+  display: none;
+}
+li {
+  display: flex;
+  display: none;
+  // justify-content: end;
+}

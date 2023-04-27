@@ -5,7 +5,6 @@ import { checkGuess } from '../../game-helpers';
 function Grid({ letter, answer }) {
   const rows = [];
   let cols = [];
-  console.log('PUTAIN DE MERDE', checkGuess(letter[0].wordName, answer));
 
   for (let i = 0; i < letter.length; i++) {
     let newClass = checkGuess(letter[i].wordName, answer);
@@ -18,7 +17,7 @@ function Grid({ letter, answer }) {
       );
     }
     rows.push(
-      <div key={i} className='row'>
+      <div key={i} className={`row c${i}`}>
         {cols}
       </div>
     );
